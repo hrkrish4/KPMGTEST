@@ -1,0 +1,57 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- 
+variables:
+ serviceConnection: 'rg-terraform-dev01'
+ backendRg : 'Terrafomr_poc'
+ backendstoargeaccount: 'terraformbackend01'
+ backendcontainername : 'backendtfstate'
+ backendAzureRmKey : 'tf/terraform.tfstate'
+
+pool:
+  vmImage: ubuntu-latest
+
+
+steps:
+ - task: TerraformInstaller@0
+   inputs:
+     terraformVersion: 'latest'
+  
+ 
+ - task: TerraformTaskV3@3 
+   displayName: Terraform-init
+   inputs:
+     provider: 'azurerm'
+     command: 'init'
+     workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
+     backendServiceArm: $(serviceConnection)
+     backendAzureRmResourceGroupName: $(backendRg)
+     backendAzureRmStorageAccountName: $(backendstoargeaccount)
+     backendAzureRmContainerName: $(backendcontainername)
+     backendAzureRmKey: $(backendAzureRmKey)
+ 
+ - task: TerraformTaskV3@3
+   inputs:
+     provider: 'azurerm'
+     command: 'validate'
+     workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
+ - task: TerraformTaskV3@3
+   displayName: Terraform-plan
+   inputs:
+     provider: 'azurerm'
+     command: 'plan'
+     workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/appservice.template'
+     environmentServiceNameAzureRM: $(serviceConnection)
+ - task: TerraformTaskV3@3
+   displayName: Terraform-apply
+   inputs:
+      provider: 'azurerm'
+      command: 'apply'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform/appservice.template'
+      environmentServiceNameAzureRM: $(serviceConnection)
+ 
+ 
