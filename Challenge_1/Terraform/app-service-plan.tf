@@ -9,5 +9,7 @@ resource "azurerm_app_service_plan" "plan" {
     tier = var.tier
     size = var.size
   }
-  
+  tags = {
+    environment = var.environment
+  }
 }

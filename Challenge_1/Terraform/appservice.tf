@@ -9,5 +9,8 @@ resource "azurerm_app_service" "app_service" {
   location            = var.location
   resource_group_name = var.resourceGroupName
   app_service_plan_id = data.azurerm_app_service_plan.example.id
-
+ 
+ tags = {
+    environment = var.environment
+  }
 }
