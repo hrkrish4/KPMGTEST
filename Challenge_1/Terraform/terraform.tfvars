@@ -18,7 +18,7 @@ Kind  ="windows"
 
 ### Appservice template variable values
 
-webappname ="frontendtest-terraform01"
+webappname =["kpmgtest-fe01","kpmgtest-be01"]
 AppserviceplanName ="appserviceplan-pro"
 
 

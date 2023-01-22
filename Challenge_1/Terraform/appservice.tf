@@ -5,7 +5,8 @@ data "azurerm_app_service_plan" "example" {
 }
 
 resource "azurerm_app_service" "app_service" {
-  name                = var.webappname
+  for_each = toset(var.webappname) 
+  name=each.value
   location            = var.location
   resource_group_name = var.resourceGroupName
   app_service_plan_id = data.azurerm_app_service_plan.example.id

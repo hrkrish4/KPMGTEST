@@ -83,7 +83,7 @@ variable "AppserviceplanName" {
 
 variable "webappname" {
 
-    type = string
+    type = list
 
     description = "webapp name"
 
