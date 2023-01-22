@@ -13,4 +13,7 @@ resource "azurerm_subnet" "example" {
       actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action"]
     }
   }
+  tags = {
+    environment = var.environment
+  }
 }

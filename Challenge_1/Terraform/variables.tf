@@ -245,3 +245,48 @@ variable "skuname" {
     description = "skuname"
 
 } 
+
+### Azure SQL server variable declaration
+variable "sqlserverName" {
+
+    type = string
+
+    description = "SqlserverName"
+
+} 
+
+variable "sqlserverVersion" {
+
+    type = string
+
+    description = "Sqlserver version"
+
+} 
+variable "sqlserverAdminLogin" {
+
+    type = string
+
+    description = "Sqlserver admin login username"
+
+} 
+variable "sqlserverAdminPwd" {
+
+    type = string
+
+    description = "Sqlserver admin login password"
+
+} 
+variable "sqldatabaseName" {
+
+    type = string
+
+    description = "Sql database Name"
+
+} 
+variable "environment" {
+
+    type = string
+
+    description = "environment of resource prod/uat/dev"
+
+} 

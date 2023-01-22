@@ -15,4 +15,7 @@ resource "azurerm_network_security_group" "example" {
     source_address_prefix      = var.secuirtyrule_sourceaddressprefix
     destination_address_prefix = var.secuirtyrule_destinationaddressprefix
   }
+  tags = {
+    environment = var.environment
+  }
 }

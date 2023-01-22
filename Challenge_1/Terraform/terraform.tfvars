@@ -56,3 +56,11 @@ secuirtyrule_destinationaddressprefix ="*"
 ### KeyVault variable values
 Keyvaultname = "terraformtest-keyvault"
 skuname = "standard"
+
+### SQL server variable values
+sqlserverName= "testkpmg124"
+sqlserverVersion = "12.0"
+sqlserverAdminLogin = "Testuser"
+sqlserverAdminPwd = "4-v3ry-53cr37-p455w0rd"
+sqldatabaseName = "testdb"
+environment = "Dev"

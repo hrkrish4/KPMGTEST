@@ -29,4 +29,8 @@ resource "azurerm_key_vault" "example" {
       "Get",
     ]
   }
+
+  tags = {
+    environment = var.environment
+  }
 }

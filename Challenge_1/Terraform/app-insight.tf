@@ -4,6 +4,9 @@ resource "azurerm_application_insights" "example" {
   location            = var.location
   resource_group_name = var.resourceGroupName
   application_type    = var.applicationtype
+  tags = {
+    environment = var.environment
+  }
 }
 
 output "instrumentation_key" {
